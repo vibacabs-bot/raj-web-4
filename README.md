@@ -10,7 +10,7 @@ Performance Google Ads & Marketing for Taxi, Cab & Tour Businesses across India.
 - **Direct Checkout**: Fast booking flow for ₹99 strategy consultation meetings.
 - **Sticky Booking Bar**: Seamless booking prompt on scroll.
 
-## Running Locally
+## Running Locallyjg
 ```bash
 npm run dev
 ```
