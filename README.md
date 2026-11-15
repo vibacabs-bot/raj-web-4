@@ -19,3 +19,4 @@ Or with PHP built-in server:
 php -S 0.0.0.0:8000 router.php
 ```
 Visit `http://localhost:3000` (or `http://localhost:3001` if port 3000 is occupied).
+ok
