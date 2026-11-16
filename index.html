@@ -476,6 +476,21 @@
     .hero-ref-media {
       position: relative;
       width: 100%;
+      overflow: hidden;
+    }
+
+    .hero-ref-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .hero-ref-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
     }
 
     .hero-ref-bg-img {
@@ -484,6 +499,64 @@
       object-fit: cover;
       object-position: center bottom;
       display: block;
+    }
+
+    .hero-ref-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(8, 13, 26, 0.55);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-ref-arrow:hover {
+      background: rgba(8, 13, 26, 0.85);
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .hero-ref-arrow--prev { left: 14px; }
+    .hero-ref-arrow--next { right: 14px; }
+
+    .hero-ref-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(8, 13, 26, 0.5);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-ref-dot-btn {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      transition: width 0.25s ease, background 0.25s ease;
+    }
+
+    .hero-ref-dot-btn.active {
+      width: 22px;
+      background: #E8FC07;
     }
 
     .hero-ref-scrim {
@@ -631,45 +704,71 @@
       }
 
       .hero-ref-media {
-        position: absolute;
-        inset: 0;
+        position: relative;
+        width: 100%;
       }
 
       .hero-ref-bg-img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 68% bottom;
+        height: auto;
+        object-fit: contain;
         display: block;
+      }
+
+      .hero-ref-arrow {
+        width: 26px;
+        height: 26px;
+      }
+
+      .hero-ref-arrow--prev { left: 6px; }
+      .hero-ref-arrow--next { right: 6px; }
+
+      .hero-ref-dots {
+        bottom: 6px;
+        padding: 3px 8px;
+        gap: 6px;
+      }
+
+      .hero-ref-dot-btn {
+        width: 6px;
+        height: 6px;
+      }
+
+      .hero-ref-dot-btn.active {
+        width: 16px;
       }
 
       .hero-ref-scrim {
         display: block;
-        background: linear-gradient(180deg, rgba(8, 13, 26, 0.72) 0%, rgba(8, 13, 26, 0.42) 48%, rgba(8, 13, 26, 0.04) 100%);
+        background: linear-gradient(180deg, rgba(8, 13, 26, 0.72) 0%, rgba(8, 13, 26, 0.36) 52%, rgba(8, 13, 26, 0.04) 100%);
       }
 
       .hero-ref-overlay {
-        position: relative;
-        padding: 16px 14px 200px;
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 12px 28px;
         background: none;
       }
 
       .hero-ref-badge {
-        font-size: 9.5px;
-        padding: 4px 10px;
-        margin-bottom: 8px;
+        font-size: 8px;
+        padding: 3px 8px;
+        margin-bottom: 5px;
       }
 
       .hero-ref-title {
-        font-size: 25px !important;
+        font-size: 16.5px !important;
         line-height: 1.15 !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 4px !important;
+        max-width: 92%;
       }
 
       .hero-ref-sub {
-        font-size: 11.5px;
-        line-height: 1.4;
-        max-width: 92%;
+        font-size: 10px;
+        line-height: 1.3;
+        max-width: 88%;
         margin-bottom: 0;
       }
 
@@ -2328,10 +2427,35 @@
 
   <!-- TOP HERO BRANDING BANNER -->
   <section class="hero-banner-section" id="top">
-    <div class="hero-ref-banner">
+    <div class="hero-ref-banner" id="hero-car-slider">
       <div class="hero-ref-media">
-        <img src="/assets/hero-taxi-banner.jpg" alt="Google Ads &amp; SEO For Taxi/Cab &amp; Tour Package Businesses" class="hero-ref-bg-img" width="1024" height="575" fetchpriority="high" decoding="async" />
+        <div class="hero-ref-track" id="hero-car-track">
+          <div class="hero-ref-slide">
+            <img src="/assets/cars/cars/City%20Taxi%20Booking%20Advertisement.png" alt="Black Taxi Cab Google Ads" class="hero-ref-bg-img" fetchpriority="high" decoding="async" />
+          </div>
+          <div class="hero-ref-slide">
+            <img src="/assets/cars/cars/Taxi%20Search%20and%20City%20Ride.png" alt="Yellow Taxi Cab Google Ads" class="hero-ref-bg-img" loading="lazy" decoding="async" />
+          </div>
+          <div class="hero-ref-slide">
+            <img src="/assets/cars/cars/Urbania%20Van%20Booking%20at%20Sunset.png" alt="Force Urbania Van Booking Ads" class="hero-ref-bg-img" loading="lazy" decoding="async" />
+          </div>
+          <div class="hero-ref-slide">
+            <img src="/assets/cars/cars/Book%20Your%20Tempo%20Traveller%20Today.png" alt="Tempo Traveller Booking Ads" class="hero-ref-bg-img" loading="lazy" decoding="async" />
+          </div>
+        </div>
         <div class="hero-ref-scrim" aria-hidden="true"></div>
+      </div>
+      <button type="button" class="hero-ref-arrow hero-ref-arrow--prev" id="hero-slider-prev" aria-label="Previous slide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button type="button" class="hero-ref-arrow hero-ref-arrow--next" id="hero-slider-next" aria-label="Next slide">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="hero-ref-dots" id="hero-slider-dots" role="tablist" aria-label="Car slider pagination">
+        <button type="button" class="hero-ref-dot-btn active" data-slide="0" aria-label="Slide 1: Black Car"></button>
+        <button type="button" class="hero-ref-dot-btn" data-slide="1" aria-label="Slide 2: Yellow Car"></button>
+        <button type="button" class="hero-ref-dot-btn" data-slide="2" aria-label="Slide 3: Urbania"></button>
+        <button type="button" class="hero-ref-dot-btn" data-slide="3" aria-label="Slide 4: Tempo Traveller"></button>
       </div>
       <div class="hero-ref-overlay">
         <div class="hero-ref-inner">
@@ -2933,7 +3057,7 @@
         <!-- 5. Travel Industry Expertise -->
         <div class="why-card-item">
           <div class="why-card-heading">
-            <span class="why-card-icon">🧠</span>
+            <span class="why-card-icon">🚖</span>
             <h3 class="why-card-title">Travel Industry Expertise</h3>
           </div>
           <p class="why-card-text">
@@ -3391,6 +3515,56 @@
     } else {
       initStatsCounter();
     }
+
+    // Hero Car Auto-Slider (1. Black Car, 2. Yellow Car, 3. Urbania, 4. Tempo Traveller)
+    (function initHeroCarSlider() {
+      const slider = document.getElementById('hero-car-slider');
+      const track = document.getElementById('hero-car-track');
+      const dots = document.querySelectorAll('#hero-slider-dots .hero-ref-dot-btn');
+      const prevBtn = document.getElementById('hero-slider-prev');
+      const nextBtn = document.getElementById('hero-slider-next');
+      if (!slider || !track || !dots.length) return;
+
+      const total = dots.length;
+      let current = 0;
+      let timer = null;
+      let touchStartX = 0;
+
+      function goTo(idx) {
+        current = (idx + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      function startAuto() {
+        stopAuto();
+        timer = setInterval(() => goTo(current + 1), 3500);
+      }
+
+      function stopAuto() {
+        if (timer) clearInterval(timer);
+      }
+
+      prevBtn && prevBtn.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+      nextBtn && nextBtn.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          goTo(Number(dot.dataset.slide) || 0);
+          startAuto();
+        });
+      });
+
+      slider.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+      slider.addEventListener('touchend', (e) => {
+        const diff = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diff) > 40) {
+          goTo(diff < 0 ? current + 1 : current - 1);
+          startAuto();
+        }
+      }, { passive: true });
+
+      startAuto();
+    })();
   </script>
 </body>
 
